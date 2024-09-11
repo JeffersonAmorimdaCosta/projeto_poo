@@ -17,9 +17,16 @@ classDiagram
         desativar()
     }
 
+    class Fase {
+        background
+        std::list<ObjetoDeJogo*>
+        run()
+        show()
+    }
+
     class Dragao {
         -Vida vida
-        -Habilidade* habilidades[3]
+        -Habilidade habilidades[3]
         +isVivo()
     }
 
@@ -34,50 +41,28 @@ classDiagram
 
     class Vida {
         -int tam
-        +perderVida()
+        -int tamAtual
+        +perderVida(const int& dano)
         +getVida()
     }
 
-    class Fase {
-        background
-        std::list<ObjetoDeJogo*>
-        run()
-        show()
-    }
 
-    class Fase1 {
+    class FaseDeBatalha {
         -bool vezUsuario
         -Dragao aliadoAtual
         +ataque(Dragao ata, Dragao def, Habilidade hab)   
-        +trocaDragaoAliado()
-        +trocaVez()
-    }
-
-    class Fase2 {
-        -bool vezUsuario
-        -Dragao aliadoAtual
-        +ataque(Dragao ata, Dragao def, Habilidade hab) 
-        +trocaDragaoAliado()
-        +trocaVez()
-    }
-
-    class Fase3 {
-        -bool vezUsuario
-        -Dragao aliadoAtual
-        +ataque(Dragao ata, Dragao def, Habilidade hab)
-        +trocaDragaoAliado()
+        +setAliadoAtual()
         +trocaVez()
     }
 
     RenderBase <|-- ObjetoDeJogo
     RenderBase <|-- Fase
 
+    ObjetoDeJogo <|-- Habilidade
     ObjetoDeJogo <|-- Dragao
     ObjetoDeJogo <|-- Vida
 
-    Fase <|-- Fase1
-    Fase <|-- Fase2
-    Fase <|-- Fase3
+    Fase <|-- FaseDeBatalha
 
     Dragao *-- Habilidade
     Dragao *-- Vida

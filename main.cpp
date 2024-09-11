@@ -4,6 +4,9 @@
 #include "ASCII_Engine/SpriteBuffer.hpp"
 #include "ASCII_Engine/TextSprite.hpp"
 #include "ASCII_Engine/SpriteAnimado.hpp"
+#include "src/Vida.hpp"
+#include "ASCII_Engine/ObjetoDeJogo.hpp"
+#include "ASCII_Engine/Cores.hpp"
 
 using namespace std;
 
@@ -33,17 +36,18 @@ int main(void) {
     Sprite laser("rsc/skills/allies/laser2.img");
     Sprite ray("rsc/skills/allies/ray.img");
     Sprite anvil("rsc/skills/allies/anvil.img");
-    TextSprite name1("Dragao Aliado");
+    // Sprite health("rsc/details/health.img");
 
-    SpriteBuffer screen(300, 102);
+    Vida vida(ObjetoDeJogo("vida", SpriteAnimado("rsc/details/health.anm", 1, COR::VERMELHA), 8, 35), 100);
+
+    SpriteBuffer screen(300, 84);
 
     // background1.draw(screen, 0, 0);
     // background2.draw(screen, 0, 0);
 
-    string str;
+    int dano;
 
     while (1) {
-        getline(cin, str);
         system("clear");
 
         // blaze.update();
@@ -52,6 +56,7 @@ int main(void) {
         background1.draw(screen, 0, 0);
         // background3.draw(screen, 0, 0);
         health_bar.draw(screen, 7, 30);
+        vida.draw(screen, vida.getPosL(), vida.getPosC());
         health_bar.draw(screen, 7, 200);
 
         // flame_dragon.draw(screen, 25, 8);
@@ -76,6 +81,8 @@ int main(void) {
 
 
         cout << screen << endl;
+        cin >> dano;
+        vida.perderVida(dano);
     }
 
     return 0;
