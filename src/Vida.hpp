@@ -7,12 +7,12 @@ class Vida : public ObjetoDeJogo {
 
     private:
         int tam, tamAtual;
-        bool s1, s2, s3, s4;
+        bool s1, s2, s3, s4, s5, s6, s7, s8, s9;
 
     public:
-        Vida(const ObjetoDeJogo& obj, const int& tam) : ObjetoDeJogo(obj),
-        s1(false), s2(false), s3(false), s4(false) {
+        Vida(const ObjetoDeJogo& obj, const int& tam) : ObjetoDeJogo(obj) {
             this->tam = this->tamAtual = (tam >= 100) ? tam : 100;
+            s1 = s2 = s3 = s4 = s5 = s6 = s7 = s8 = s9 = false;
         }
 
         int getVida() const {return this->tamAtual; }
