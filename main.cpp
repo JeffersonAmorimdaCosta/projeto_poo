@@ -7,6 +7,7 @@
 #include "src/Vida.hpp"
 #include "ASCII_Engine/ObjetoDeJogo.hpp"
 #include "ASCII_Engine/Cores.hpp"
+#include "src/Habilidade.hpp"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ int main(void) {
     // Sprite hit2("rsc/skills/hit2.img");
     // Sprite hit3("rsc/skills/hit3.img");
     // Sprite hit4("rsc/skills/hit4.img");
-    Sprite health_bar("rsc/details/health_bar.img");
+    Sprite health_bar("rsc/details/health_bar.img", COR::MARROM);
     // Sprite earthquake("rsc/skills/earthquake.anm");
     // Sprite meteors("rsc/skills/meteors.img");
     SpriteAnimado flame("rsc/skills/allies/flame.anm");
@@ -38,13 +39,12 @@ int main(void) {
     Sprite anvil("rsc/skills/allies/anvil.img");
     // Sprite health("rsc/details/health.img");
 
-    Vida vida(ObjetoDeJogo("vida", SpriteAnimado("rsc/details/health.anm", 1, COR::VERMELHA), 8, 35), 100);
+    Vida vida(ObjetoDeJogo("vida", SpriteAnimado("rsc/details/health.anm", 1, COR::VERDE), 8, 35), 100);
 
     SpriteBuffer screen(300, 84);
 
     // background1.draw(screen, 0, 0);
     // background2.draw(screen, 0, 0);
-
     int dano;
 
     while (1) {

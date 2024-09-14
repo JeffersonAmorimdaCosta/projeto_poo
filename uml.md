@@ -25,15 +25,13 @@ classDiagram
     }
 
     class Dragao {
-        -Vida vida
-        -Habilidade habilidades[3]
+        -Vida* vida
+        -Habilidade* habilidades[3]
         +isVivo()
     }
 
     class Habilidade {
         -String nome
-        -int danoMaximo
-        -int danoMinimo
         -std::uniform_int_distribution<> distrib
         +getNome()
         +getDano()
