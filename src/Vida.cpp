@@ -3,49 +3,49 @@
 void Vida::perderVida(const int& dano) {
     this->tamAtual = (dano <= this->tamAtual) ? this->tamAtual - dano : 0;
 
-    if (this->tamAtual <= this->tam * 0.9 && !this->s1) {
+    if (this->tamAtual <= this->tam * 0.9 && !this->condicoes.test(0)) {
         this->update();
-        this->s1 = true;
+        this->condicoes.set(0, true);
     }
 
-    if (this->tamAtual <= this->tam * 0.8 && !this->s2) {
+    if (this->tamAtual <= this->tam * 0.8 &&!this->condicoes.test(1)) {
         this->update();
-        this->s2 = true;
+        this->condicoes.set(1, true);
     }
 
-    if (this->tamAtual <= this->tam * 0.7 && !this->s3) {
+    if (this->tamAtual <= this->tam * 0.7 && !this->condicoes.test(2)) {
         this->update();
-        this->s3 = true;
+        this->condicoes.set(2, true);
     }
     
-    if (this->tamAtual <= this->tam * 0.6 && !this->s4) {
+    if (this->tamAtual <= this->tam * 0.6 && !this->condicoes.test(3)) {
         this->update();
-        this->s4 = true;
+        this->condicoes.set(3, true);
     }
 
-    if (this->tamAtual <= this->tam * 0.5 && !this->s5) {
+    if (this->tamAtual <= this->tam * 0.5 && !this->condicoes.test(4)) {
         this->update();
-        this->s5 = true;
+        this->condicoes.set(4, true);
     }
 
-    if (this->tamAtual <= this->tam * 0.4 && !this->s6) {
+    if (this->tamAtual <= this->tam * 0.4 && !this->condicoes.test(5)) {
         this->update();
-        this->s6 = true;
+        this->condicoes.set(5, true);
     }
 
-    if (this->tamAtual <= this->tam * 0.3 && !this->s7) {
+    if (this->tamAtual <= this->tam * 0.3 && !this->condicoes.test(6)) {
         this->update();
-        this->s7 = true;
+        this->condicoes.set(6, true);
     }
     
-    if (this->tamAtual <= this->tam * 0.2 && !this->s8) {
+    if (this->tamAtual <= this->tam * 0.2 && !this->condicoes.test(7)) {
         this->update();
-        this->s8 = true;
+        this->condicoes.set(7, true);
     }
 
-    if (this->tamAtual <= this->tam * 0.1 && !this->s9) {
+    if (this->tamAtual <= this->tam * 0.1 && !this->condicoes.test(8)) {
         this->update();
-        this->s9 = true;
+        this->condicoes.set(8, true);
     }
 
     if (!this->tamAtual)
