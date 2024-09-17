@@ -22,23 +22,26 @@ class FaseDeBatalha : public Fase {
 
     private:
         Dragao* aliados[3];
+        Vida* vidaAliados[3];
+
         Dragao* inimigo;
+        Vida* vidaInimigo;
         
         bool vezUsuario;
         Dragao* aliadoAtual;
+        Vida* vidaAliadoAtual;
         int indiceAliado;
-
-        std::atomic<bool> rodando;
 
     public:
 
         template<typename T>
         FaseDeBatalha(string name, const T& bkg, const bool& vezUsuario = 
-        true) : Fase(name, bkg), vezUsuario(vezUsuario), indiceAliado(2) { }
+        true) : Fase(name, bkg), vezUsuario(vezUsuario), indiceAliado(0) { }
 
         ~FaseDeBatalha() { }
 
         void init() override;
+        void update() override;
         unsigned run(SpriteBuffer&) override;
         
         void trocaVez() {this->vezUsuario = !this->vezUsuario; }
@@ -47,11 +50,7 @@ class FaseDeBatalha : public Fase {
 
         void ataque(const Dragao&, Dragao&, Habilidade&);
 
-        void capturarEntrada();
-
         void pausar(int ms);
-
-        void configurarEntradaNaoBloqueante();
 
         void configurarModoNaoBloqueante(const bool&);
 
