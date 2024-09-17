@@ -122,17 +122,17 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
                 
             else if (ent == '1') {
                 Habilidade hab1 = this->aliadoAtual->getHabilidade1();
-                this->ataque(*this->aliadoAtual, *this->inimigo, hab1);
+                this->ataque(*this->inimigo, hab1);
             }
 
             else if (ent == '2') {
                 Habilidade hab2 = this->aliadoAtual->getHabilidade2();
-                this->ataque(*this->aliadoAtual, *this->inimigo, hab2);
+                this->ataque(*this->inimigo, hab2);
             }
 
             else if (ent == '3') {
                 Habilidade hab3 = this->aliadoAtual->getHabilidade3();
-                this->ataque(*this->aliadoAtual, *this->inimigo, hab3);
+                this->ataque(*this->inimigo, hab3);
             }
         }
 
@@ -144,17 +144,17 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
 
             if (hab == 1) {
                 Habilidade hab1 = this->inimigo->getHabilidade1();
-                this->ataque(*this->inimigo, *this->aliadoAtual, hab1);
+                this->ataque(*this->aliadoAtual, hab1);
             }
 
             else if (hab == 2) {
                 Habilidade hab2 = this->inimigo->getHabilidade1();
-                this->ataque(*this->inimigo, *this->aliadoAtual, hab2);
+                this->ataque(*this->aliadoAtual, hab2);
             }
 
             else if (hab == 3) {
                 Habilidade hab3 = this->inimigo->getHabilidade1();
-                this->ataque(*this->inimigo, *this->aliadoAtual, hab3);
+                this->ataque(*this->aliadoAtual, hab3);
             }
         }
 
@@ -172,12 +172,12 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
 
 void FaseDeBatalha::setAliadoAtual() {
     (this->aliadoAtual)++->desativarObj();
-    (this->vidaAliadoAtual)++->desativarObj();
+    // (this->vidaAliadoAtual)++->desativarObj();
     this->aliadoAtual->ativarObj();
     this->vidaAliadoAtual->ativarObj();
 }
 
-void FaseDeBatalha::ataque(const Dragao& atacante, Dragao& defensor, Habilidade& habilidade) {
+void FaseDeBatalha::ataque(Dragao& defensor, Habilidade& habilidade) {
     // Animação da habilidade...
 
     defensor.sofrerDano(habilidade.getDano());

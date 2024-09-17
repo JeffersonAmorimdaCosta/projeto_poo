@@ -48,7 +48,7 @@ class FaseDeBatalha : public Fase {
 
         void setAliadoAtual();
 
-        void ataque(const Dragao&, Dragao&, Habilidade&);
+        void ataque(Dragao&, Habilidade&);
 
         void pausar(int ms);
 
