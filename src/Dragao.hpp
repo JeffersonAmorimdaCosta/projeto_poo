@@ -9,7 +9,7 @@
 class Dragao : public ObjetoDeJogo {
 
     private:
-        Vida vida;
+        Vida &vida;
         Habilidade hab1;
         Habilidade hab2;
         Habilidade hab3;

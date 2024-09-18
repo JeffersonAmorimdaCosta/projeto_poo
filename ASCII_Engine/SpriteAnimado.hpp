@@ -41,7 +41,7 @@ public:
 private:
 	std::vector<Sprite> sprites;
 	unsigned numSprites;
-	
+
 	//controle de animacao
 	unsigned velAnim, stepAnim, iSpriteAnim;
 	

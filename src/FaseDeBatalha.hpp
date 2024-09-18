@@ -8,10 +8,8 @@
 
 #include <string>
 #include <thread>
-#include <atomic>
 #include <unistd.h>
 #include <termio.h>
-#include <fcntl.h>
 #include <random>
 #include <iostream>
 #include <chrono>
