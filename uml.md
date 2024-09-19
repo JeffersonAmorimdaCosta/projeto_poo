@@ -65,5 +65,4 @@ classDiagram
     Fase <|-- FaseDeBatalha
 
     Dragao *-- Habilidade
-    Dragao *-- Vida
 ```

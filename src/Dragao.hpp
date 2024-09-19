@@ -9,18 +9,20 @@
 class Dragao : public ObjetoDeJogo {
 
     private:
-        Vida &vida;
+        // int vidaTotal;
+        // int vidaAtual;
+        // Vida &vida;
         Habilidade hab1;
         Habilidade hab2;
         Habilidade hab3;
 
     public:
-        Dragao(const ObjetoDeJogo& obj, Vida& vida, const Habilidade& hab1, 
-        const Habilidade& hab2, const Habilidade& hab3) : ObjetoDeJogo(obj),
-        vida(vida), hab1(hab1), hab2(hab2), hab3(hab3) { }
+        Dragao(const ObjetoDeJogo& obj, const Habilidade& hab1, 
+        const Habilidade& hab2, const Habilidade& hab3) : ObjetoDeJogo(obj), 
+        hab1(hab1), hab2(hab2), hab3(hab3) { }
 
-        bool estaVivo() const {return this->vida.getVida() > 0; }
-        void sofrerDano(const int& dano) {this->vida.perderVida(dano); }
+        // bool estaVivo() const {return this->vida.getVida() > 0; }
+        // void sofrerDano(const int& dano) {this->vida.perderVida(dano); }
 
         Habilidade getHabilidade1() const {return this->hab1; }
         Habilidade getHabilidade2() const {return this->hab2; }

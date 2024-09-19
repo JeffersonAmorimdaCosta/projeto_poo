@@ -25,16 +25,17 @@ class FaseDeBatalha : public Fase {
         Dragao* inimigo;
         Vida* vidaInimigo;
         
-        bool vezUsuario;
         Dragao* aliadoAtual;
         Vida* vidaAliadoAtual;
-        int indiceAliado;
+        bool vezUsuario;
+        int indiceAliado, indiceVida;
 
     public:
 
         template<typename T>
         FaseDeBatalha(string name, const T& bkg, const bool& vezUsuario = 
-        true) : Fase(name, bkg), vezUsuario(vezUsuario), indiceAliado(0) { }
+        true) : Fase(name, bkg), vezUsuario(vezUsuario), indiceAliado(0), 
+        indiceVida(0) { }
 
         ~FaseDeBatalha() { }
 
@@ -46,7 +47,7 @@ class FaseDeBatalha : public Fase {
 
         void setAliadoAtual();
 
-        void ataque(Dragao&, Habilidade&);
+        void ataque(Habilidade&, Vida&);
 
         void pausar(int ms);
 

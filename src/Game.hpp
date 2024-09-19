@@ -7,6 +7,8 @@
 #include <iostream>
 #include <string>
 
+using std::cout, std::endl;
+
 class Game {
 
     public:
@@ -25,11 +27,14 @@ class Game {
             int ret1 = fase1.run(screen);
             system("clear");
 
-            if (ret1 != Fase::GAME_OVER && ret1 != Fase::END_GAME)
-                std::cout << "Vitoria!" << std::endl;
+            if (ret1 == Fase::LEVEL_COMPLETE)
+                cout << "Vitoria!" << endl;
 
+            else if (ret1 == Fase::END_GAME)
+                cout << "Voce saiu do jogo." << endl;
+            
             else
-                std::cout << "Derrota!" << std::endl;
+                cout << "Derrota!" << endl;
         }
 };
 
