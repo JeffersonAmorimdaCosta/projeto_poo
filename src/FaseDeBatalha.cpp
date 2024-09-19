@@ -2,8 +2,21 @@
 
 void FaseDeBatalha::init() {
 
-    objs.push_back(new ObjetoDeJogo("barra vida inimigo", Sprite("rsc/details/health_bar.img", COR::MARROM), 7, 200));
-    objs.push_back(new ObjetoDeJogo("barra vida aliado", Sprite("rsc/details/health_bar.img", COR::MARROM), 7, 30));
+    this->molduraVidaInimigo = new ObjetoDeJogo("moldura vida inimigo", Sprite("rsc/details/health_bar.img", COR::MARROM), 7, 200);
+    objs.push_back(this->molduraVidaInimigo);
+
+    this->molduraVidaAliado = new ObjetoDeJogo("moldura vida aliado", Sprite("rsc/details/health_bar.img", COR::MARROM), 7, 30);
+    objs.push_back(this->molduraVidaAliado);
+
+    this->caixaHabilidade1 = new ObjetoDeJogo("caixa habilidade 1", Sprite("rsc/details/skill_box1.img", COR::CIANO), 73, 10);
+    objs.push_back(this->caixaHabilidade1);
+    
+    this->caixaHabilidade2 = new ObjetoDeJogo("caixa habilidade 2", Sprite("rsc/details/skill_box2.img", COR::CIANO), 73, 85);
+    objs.push_back(this->caixaHabilidade2);
+
+    this->caixaHabilidade3 = new ObjetoDeJogo("caixa habilidade 3", Sprite("rsc/details/skill_box3.img", COR::CIANO), 73, 160);
+    objs.push_back(this->caixaHabilidade3);
+
 
     Habilidade blazeSkill(ObjetoDeJogo("blaze", SpriteAnimado("rsc/skills/allies/blaze.anm", 1, COR::VERMELHA), 47, 190), "blaze", 300, 500);
 
@@ -40,6 +53,18 @@ void FaseDeBatalha::init() {
     this->aliados[2] = new Dragao(ObjetoDeJogo("metal dragon", Sprite("rsc/allies/metal_dragon.img", COR::CINZA_ESCURA), 25, 8), blazeSkill, flameSkill, blazeSkill);
     objs.push_back(this->aliados[2]);
     this->aliados[2]->desativarObj();
+}
+
+void FaseDeBatalha::ativarCaixasHabilidade(bool ativar) {
+    if (ativar) {
+        this->caixaHabilidade1->ativarObj();
+        this->caixaHabilidade2->ativarObj();
+        this->caixaHabilidade3->ativarObj();
+    } else {
+        this->caixaHabilidade1->desativarObj();
+        this->caixaHabilidade2->desativarObj();
+        this->caixaHabilidade3->desativarObj();
+    }
 }
 
 void FaseDeBatalha::update() {
@@ -100,6 +125,8 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
             char ent;
             std::cin >> ent;
 
+            // this->pausar(1000);
+
             if (ent == 'q') {
                 resultado = Fase::END_GAME;
                 break;
@@ -122,7 +149,7 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
         }
 
         else {
-            this->pausar(1000);
+            // this->pausar(1000);
             // Mecânica do inimigo
 
             int hab = this->gerarNumeroAleatorio(1, 3); // Sortando qual vai ser a habilidade do inimigo
@@ -158,6 +185,10 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
             break;
         }
 
+        bool ativarCaixas = this->vezUsuario ? false : true;
+        this->ativarCaixasHabilidade(ativarCaixas);
+
+        this->pausar(1000);
         this->trocaVez();
         screen.clear();
         this->update();

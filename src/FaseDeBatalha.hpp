@@ -30,6 +30,9 @@ class FaseDeBatalha : public Fase {
         bool vezUsuario;
         int indiceAliado, indiceVida;
 
+        ObjetoDeJogo *molduraVidaAliado, *molduraVidaInimigo, *caixaHabilidade1,
+        *caixaHabilidade2, *caixaHabilidade3;
+
     public:
 
         template<typename T>
@@ -54,6 +57,8 @@ class FaseDeBatalha : public Fase {
         void configurarModoNaoBloqueante(const bool&);
 
         int gerarNumeroAleatorio(const int&, const int&);
+
+        void ativarCaixasHabilidade(bool);
 };
 
 #endif
