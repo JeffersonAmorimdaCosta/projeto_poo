@@ -2,6 +2,17 @@
 
 void FaseDeBatalha::init() {
 
+    this->suaVez = new ObjetoDeJogo("sua vez", Sprite("rsc/details/your_turn.img", COR::VERDE), 4, 130);
+    objs.push_back(this->suaVez);
+
+    this->vezOponente = new ObjetoDeJogo("vez oponente", Sprite("rsc/details/enemy_turn.img", COR::VERMELHA), 3, 118);
+    objs.push_back(this->vezOponente);
+
+    if (this->vezUsuario)
+        this->vezOponente->desativarObj();
+    else
+        this->suaVez->desativarObj();
+
     this->molduraVidaInimigo = new ObjetoDeJogo("moldura vida inimigo", Sprite("rsc/details/health_bar.img", COR::MARROM), 7, 200);
     objs.push_back(this->molduraVidaInimigo);
 
@@ -26,7 +37,7 @@ void FaseDeBatalha::init() {
 
     Habilidade earthquakeSkill(ObjetoDeJogo("earthquake", SpriteAnimado("rsc/skills/enemies/earthquake.anm", 1, COR::MARROM), 38, 190), "earthquake", 150, 300); 
 
-    this->vidaInimigo = new Vida(ObjetoDeJogo("vida inimigo", SpriteAnimado("rsc/details/health.anm", 1, COR::VERDE), 8, 205), 3600);
+    this->vidaInimigo = new Vida(ObjetoDeJogo("vida inimigo", SpriteAnimado("rsc/details/health.anm", 1, COR::VERDE), 8, 205), 3400);
     objs.push_back(this->vidaInimigo);
 
     this->vidaAliadoAtual = this->vidaAliados[0] = new Vida(ObjetoDeJogo("vida aliado 1", SpriteAnimado("rsc/details/health.anm", 1, COR::VERDE), 8, 35), 1000);
@@ -55,8 +66,16 @@ void FaseDeBatalha::init() {
     this->aliados[2]->desativarObj();
 }
 
-void FaseDeBatalha::ativarCaixasHabilidade(bool ativar) {
-    if (ativar) {
+void FaseDeBatalha::atualizaTerminal(SpriteBuffer& screen) {
+    screen.clear();
+    this->update();
+    system("clear");
+    this->draw(screen);
+    this->show(screen);
+}
+
+void FaseDeBatalha::ativarCaixasHabilidade() {
+    if (!this->vezUsuario) {
         this->caixaHabilidade1->ativarObj();
         this->caixaHabilidade2->ativarObj();
         this->caixaHabilidade3->ativarObj();
@@ -64,6 +83,16 @@ void FaseDeBatalha::ativarCaixasHabilidade(bool ativar) {
         this->caixaHabilidade1->desativarObj();
         this->caixaHabilidade2->desativarObj();
         this->caixaHabilidade3->desativarObj();
+    }
+}
+
+void FaseDeBatalha::indicarTurno() {
+    if (!this->vezUsuario) {
+        this->suaVez->ativarObj();
+        this->vezOponente->desativarObj();
+    } else {
+        this->suaVez->desativarObj();
+        this->vezOponente->ativarObj();
     }
 }
 
@@ -110,26 +139,23 @@ void FaseDeBatalha::pausar(int ms) {
 }
 
 unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
-    this->configurarModoNaoBloqueante(true);
 
-    screen.clear();
-    system("clear");
-    this->draw(screen);
-    this->show(screen);
+    this->configurarModoNaoBloqueante(true);    
+    this->atualizaTerminal(screen);
 
     unsigned resultado;
 
      while (true) {
 
         if (this->vezUsuario) {
+
             char ent;
             std::cin >> ent;
 
             // this->pausar(1000);
 
             if (ent == 'q') {
-                resultado = Fase::END_GAME;
-                break;
+                return Fase::END_GAME;
             }
                 
             else if (ent == '1') {
@@ -160,12 +186,12 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
             }
 
             else if (hab == 2) {
-                Habilidade hab2 = this->inimigo->getHabilidade1();
+                Habilidade hab2 = this->inimigo->getHabilidade2();
                 this->ataque(hab2, *this->vidaAliadoAtual);
             }
 
             else if (hab == 3) {
-                Habilidade hab3 = this->inimigo->getHabilidade1();
+                Habilidade hab3 = this->inimigo->getHabilidade3();
                 this->ataque(hab3, *this->vidaAliadoAtual);
             }
         }
@@ -185,17 +211,17 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
             break;
         }
 
-        bool ativarCaixas = this->vezUsuario ? false : true;
-        this->ativarCaixasHabilidade(ativarCaixas);
+        this->ativarCaixasHabilidade();
+        this->indicarTurno();
 
         this->pausar(1000);
         this->trocaVez();
-        screen.clear();
-        this->update();
-        system("clear");
-        this->draw(screen);
-        this->show(screen);
+        this->atualizaTerminal(screen);
     }
+
+    this->pausar(1000);
+    this->atualizaTerminal(screen);
+    this->pausar(1000);
 
     this->configurarModoNaoBloqueante(false);
     return resultado;

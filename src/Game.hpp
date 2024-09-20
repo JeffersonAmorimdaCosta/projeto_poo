@@ -16,7 +16,7 @@ class Game {
         ~Game() { }
 
         static void run() {
-            SpriteBuffer screen(300, 84);
+            SpriteBuffer screen(300, 83);
 
             FaseDeBatalha fase1("fase1", Sprite("rsc/background/background1.img", COR::CINZA));
 

@@ -31,7 +31,7 @@ class FaseDeBatalha : public Fase {
         int indiceAliado, indiceVida;
 
         ObjetoDeJogo *molduraVidaAliado, *molduraVidaInimigo, *caixaHabilidade1,
-        *caixaHabilidade2, *caixaHabilidade3;
+        *caixaHabilidade2, *caixaHabilidade3, *suaVez, *vezOponente;
 
     public:
 
@@ -58,7 +58,11 @@ class FaseDeBatalha : public Fase {
 
         int gerarNumeroAleatorio(const int&, const int&);
 
-        void ativarCaixasHabilidade(bool);
+        void ativarCaixasHabilidade();
+
+        void indicarTurno();
+
+        void atualizaTerminal(SpriteBuffer&);
 };
 
 #endif
