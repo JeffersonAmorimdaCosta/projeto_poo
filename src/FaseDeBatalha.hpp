@@ -21,6 +21,8 @@ class FaseDeBatalha : public Fase {
     private:
         Dragao* aliados[3];
         Vida* vidaAliados[3];
+        Habilidade* habilidadesAliados[9];
+        Habilidade* habilidadesInimigo[3];
 
         Dragao* inimigo;
         Vida* vidaInimigo;
