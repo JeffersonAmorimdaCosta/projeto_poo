@@ -9,8 +9,7 @@
 class Dragao : public ObjetoDeJogo {
 
     public:
-        Dragao(const ObjetoDeJogo& obj, const Habilidade& hab1, 
-        const Habilidade& hab2, const Habilidade& hab3) : ObjetoDeJogo(obj) { }
+        Dragao(const ObjetoDeJogo& obj) : ObjetoDeJogo(obj) { }
 };
 
 #endif

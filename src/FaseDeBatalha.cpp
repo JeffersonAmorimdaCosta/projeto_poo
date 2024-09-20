@@ -71,14 +71,14 @@ void FaseDeBatalha::init() {
 
     this->vidaAliados[2] = new Vida(ObjetoDeJogo("vida aliado 3", SpriteAnimado("rsc/details/health.anm", 1, COR::VERDE), 8, 35), 1000);
 
-    this->inimigo = new Dragao(ObjetoDeJogo("inimigo", Sprite("rsc/enemies/villain_dragon.img", COR::MARROM_ESCURA), 14, 180), *this->habilidadesAliados[0], *this->habilidadesAliados[1], *this->habilidadesAliados[2]);
+    this->inimigo = new Dragao(ObjetoDeJogo("inimigo", Sprite("rsc/enemies/villain_dragon.img", COR::MARROM_ESCURA), 14, 180));
     objs.push_back(this->inimigo);
 
-    this->aliadoAtual = this->aliados[0] = new Dragao(ObjetoDeJogo("flame dragon", Sprite("rsc/allies/flame_dragon.img", COR::VERMELHA), 25, 8), *this->habilidadesAliados[0], *this->habilidadesAliados[1], *this->habilidadesAliados[2]);
+    this->aliadoAtual = this->aliados[0] = new Dragao(ObjetoDeJogo("flame dragon", Sprite("rsc/allies/flame_dragon.img", COR::VERMELHA), 25, 8));
 
-    this->aliados[1] = new Dragao(ObjetoDeJogo("eletric dragon", Sprite("rsc/allies/eletric_dragon.img", COR::AMARELA), 23, 8), *this->habilidadesAliados[3], *this->habilidadesAliados[4], *this->habilidadesAliados[5]);
+    this->aliados[1] = new Dragao(ObjetoDeJogo("eletric dragon", Sprite("rsc/allies/eletric_dragon.img", COR::AMARELA), 23, 8));
 
-    this->aliados[2] = new Dragao(ObjetoDeJogo("metal dragon", Sprite("rsc/allies/metal_dragon.img", COR::CINZA_ESCURA), 25, 8), *this->habilidadesAliados[6], *this->habilidadesAliados[7], *this->habilidadesAliados[8]);
+    this->aliados[2] = new Dragao(ObjetoDeJogo("metal dragon", Sprite("rsc/allies/metal_dragon.img", COR::CINZA_ESCURA), 25, 8));
 
     for (int i = 0; i < 3; i++) {
         objs.push_back(this->vidaAliados[i]);
