@@ -3,9 +3,6 @@
 
 #include "../ASCII_Engine/ObjetoDeJogo.hpp"
 
-#include "Vida.hpp"
-#include "Habilidade.hpp"
-
 class Dragao : public ObjetoDeJogo {
 
     public:

@@ -23,6 +23,7 @@ class FaseDeBatalha : public Fase {
         Vida* vidaAliados[3];
         Habilidade* habilidadesAliados[9];
         Habilidade* habilidadesInimigo[3];
+        ObjetoDeJogo* nomesHabilidades[9];
 
         Dragao* inimigo;
         Vida* vidaInimigo;
@@ -30,7 +31,7 @@ class FaseDeBatalha : public Fase {
         Dragao* aliadoAtual;
         Vida* vidaAliadoAtual;
         bool vezUsuario;
-        int indiceAliado, indiceVida;
+        int indiceAliado, indiceVida, indicePrimeiraHabilidade, qntHabilidades;
 
         ObjetoDeJogo *molduraVidaAliado, *molduraVidaInimigo, *caixaHabilidade1,
         *caixaHabilidade2, *caixaHabilidade3, *suaVez, *vezOponente;
@@ -40,7 +41,7 @@ class FaseDeBatalha : public Fase {
         template<typename T>
         FaseDeBatalha(string name, const T& bkg, const bool& vezUsuario = 
         true) : Fase(name, bkg), vezUsuario(vezUsuario), indiceAliado(0), 
-        indiceVida(0) { }
+        indiceVida(0), indicePrimeiraHabilidade(0), qntHabilidades(3) { }
 
         ~FaseDeBatalha() { }
 
@@ -65,6 +66,12 @@ class FaseDeBatalha : public Fase {
         void indicarTurno();
 
         void atualizaTerminal(SpriteBuffer&);
+
+        void animacaoHabilidade(SpriteBuffer&);
+
+        void selecionarNomesHabilidades();
+
+        void ativarNomesHabildades();
 };
 
 #endif

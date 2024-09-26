@@ -2,10 +2,10 @@
 
 void FaseDeBatalha::init() {
 
-    this->suaVez = new ObjetoDeJogo("sua vez", Sprite("rsc/details/your_turn.img", COR::VERDE), 4, 130);
+    this->suaVez = new ObjetoDeJogo("sua vez", Sprite("rsc/details/sua_vez.img", COR::VERDE), 4, 130);
     objs.push_back(this->suaVez);
 
-    this->vezOponente = new ObjetoDeJogo("vez oponente", Sprite("rsc/details/enemy_turn.img", COR::VERMELHA), 3, 118);
+    this->vezOponente = new ObjetoDeJogo("vez oponente", Sprite("rsc/details/vez_oponente.img", COR::VERMELHA), 3, 118);
     objs.push_back(this->vezOponente);
 
     if (this->vezUsuario)
@@ -22,49 +22,30 @@ void FaseDeBatalha::init() {
     this->caixaHabilidade1 = new ObjetoDeJogo("caixa habilidade 1", Sprite("rsc/details/skill_box1.img", COR::CIANO), 73, 10);
     objs.push_back(this->caixaHabilidade1);
     
-    this->caixaHabilidade2 = new ObjetoDeJogo("caixa habilidade 2", Sprite("rsc/details/skill_box2.img", COR::CIANO), 73, 85);
+    this->caixaHabilidade2 = new ObjetoDeJogo("caixa habilidade 2", Sprite("rsc/details/skill_box2.img", COR::CIANO), 73, 95);
     objs.push_back(this->caixaHabilidade2);
 
-    this->caixaHabilidade3 = new ObjetoDeJogo("caixa habilidade 3", Sprite("rsc/details/skill_box3.img", COR::CIANO), 73, 160);
+    this->caixaHabilidade3 = new ObjetoDeJogo("caixa habilidade 3", Sprite("rsc/details/skill_box3.img", COR::CIANO), 73, 180);
     objs.push_back(this->caixaHabilidade3);
 
-    this->habilidadesInimigo[0] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
+    this->nomesHabilidades[0] = new ObjetoDeJogo("nome habilidade 1", Sprite("rsc/details/soco.img", COR::MAGENTA), 75, 39);
+    objs.push_back(this->nomesHabilidades[0]);
 
-    this->habilidadesInimigo[1] = new Habilidade(ObjetoDeJogo("blaze", SpriteAnimado("rsc/skills/allies/blaze.anm", 1, COR::VERMELHA), 47, 190), "blaze", 300, 500);
+    this->nomesHabilidades[1] = new ObjetoDeJogo("nome habilidade 2", Sprite("rsc/details/labareda.img", COR::MAGENTA), 74, 110);
+    objs.push_back(this->nomesHabilidades[1]);
 
-    this->habilidadesInimigo[2] = new Habilidade(ObjetoDeJogo("flame", SpriteAnimado("rsc/skills/allies/flame.anm", 1, COR::VERMELHA), 47, 105), "flame", 250, 400);
+    this->nomesHabilidades[2] = new ObjetoDeJogo("nome habilidade 3", Sprite("rsc/details/chamas.img", COR::MAGENTA), 74, 195);
+    objs.push_back(this->nomesHabilidades[2]);
 
-    for (auto hab : this->habilidadesInimigo) {
-        hab->desativarObj();
-        objs.push_back(hab);
-    }
+    this->nomesHabilidades[3] = new ObjetoDeJogo("nome habilidade 4", Sprite("rsc/details/soco.img", COR::MAGENTA), 75, 39);
+    objs.push_back(this->nomesHabilidades[0]);
 
-    this->habilidadesAliados[0] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
-    
-    this->habilidadesAliados[1] = new Habilidade(ObjetoDeJogo("blaze", SpriteAnimado("rsc/skills/allies/blaze.anm", 1, COR::VERMELHA), 47, 190), "blaze", 300, 500);
+    this->nomesHabilidades[6] = new ObjetoDeJogo("nome habilidade 7", Sprite("rsc/details/soco.img", COR::MAGENTA), 75, 39);
+    objs.push_back(this->nomesHabilidades[0]);
 
-    this->habilidadesAliados[2] = new Habilidade(ObjetoDeJogo("flame", SpriteAnimado("rsc/skills/allies/flame.anm", 1, COR::VERMELHA), 47, 105), "flame", 250, 400);
-
-    this->habilidadesAliados[3] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
-
-    this->habilidadesAliados[4] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
-    
-    this->habilidadesAliados[5] = new Habilidade(ObjetoDeJogo("blaze", SpriteAnimado("rsc/skills/allies/blaze.anm", 1, COR::VERMELHA), 47, 190), "blaze", 300, 500);
-
-    this->habilidadesAliados[6] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
-
-    this->habilidadesAliados[7] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
-    
-    this->habilidadesAliados[8] = new Habilidade(ObjetoDeJogo("blaze", SpriteAnimado("rsc/skills/allies/blaze.anm", 1, COR::VERMELHA), 47, 190), "blaze", 300, 500);
-
-    for (auto hab : this->habilidadesAliados) {
-        hab->desativarObj();
-        objs.push_back(hab);
-    }
-
-    this->vidaInimigo = new Vida(ObjetoDeJogo("vida inimigo", SpriteAnimado("rsc/details/health.anm", 1, COR::VERDE), 8, 205), 3400);
+    this->vidaInimigo = new Vida(ObjetoDeJogo("vida inimigo", SpriteAnimado("rsc/details/health.anm", 1, COR::VERDE), 8, 205), 3500);
     objs.push_back(this->vidaInimigo);
-
+ 
     this->vidaAliadoAtual = this->vidaAliados[0] = new Vida(ObjetoDeJogo("vida aliado 1", SpriteAnimado("rsc/details/health.anm", 1, COR::VERDE), 8, 35), 1000);
 
     this->vidaAliados[1] = new Vida(ObjetoDeJogo("vida aliado 2", SpriteAnimado("rsc/details/health.anm", 1, COR::VERDE), 8, 35), 1000);
@@ -90,6 +71,40 @@ void FaseDeBatalha::init() {
         this->vidaAliados[i]->desativarObj();
         this->aliados[i]->desativarObj();
     }
+
+    this->habilidadesInimigo[0] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
+
+    this->habilidadesInimigo[1] = new Habilidade(ObjetoDeJogo("blaze", SpriteAnimado("rsc/skills/allies/blaze.anm", 1, COR::VERMELHA), 47, 190), "blaze", 300, 500);
+
+    this->habilidadesInimigo[2] = new Habilidade(ObjetoDeJogo("flame", SpriteAnimado("rsc/skills/allies/flame.anm", 1, COR::VERMELHA), 47, 105), "flame", 250, 400);
+
+    for (auto hab : this->habilidadesInimigo) {
+        hab->desativarObj();
+        objs.push_back(hab);
+    }
+
+    this->habilidadesAliados[0] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 48, 190), "hit", 300, 500);
+    
+    this->habilidadesAliados[1] = new Habilidade(ObjetoDeJogo("blaze", SpriteAnimado("rsc/skills/allies/blaze.anm", 1, COR::VERMELHA), 48, 190), "blaze", 300, 500);
+
+    this->habilidadesAliados[2] = new Habilidade(ObjetoDeJogo("flame", SpriteAnimado("rsc/skills/allies/flame.anm", 1, COR::VERMELHA), 47, 105), "flame", 250, 400);
+
+    this->habilidadesAliados[3] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
+
+    this->habilidadesAliados[4] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
+    
+    this->habilidadesAliados[5] = new Habilidade(ObjetoDeJogo("blaze", SpriteAnimado("rsc/skills/allies/blaze.anm", 1, COR::VERMELHA), 47, 190), "blaze", 300, 500);
+
+    this->habilidadesAliados[6] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
+
+    this->habilidadesAliados[7] = new Habilidade(ObjetoDeJogo("hit", Sprite("rsc/skills/allies/hit1.img", COR::VERMELHA), 47, 190), "hit", 300, 500);
+    
+    this->habilidadesAliados[8] = new Habilidade(ObjetoDeJogo("blaze", SpriteAnimado("rsc/skills/allies/blaze.anm", 1, COR::VERMELHA), 47, 190), "blaze", 300, 500);
+
+    for (auto hab : this->habilidadesAliados) {
+        hab->desativarObj();
+        objs.push_back(hab);
+    }
 }
 
 void FaseDeBatalha::atualizaTerminal(SpriteBuffer& screen) {
@@ -101,23 +116,32 @@ void FaseDeBatalha::atualizaTerminal(SpriteBuffer& screen) {
 }
 
 void FaseDeBatalha::ativarCaixasHabilidade() {
-    if (!this->vezUsuario) {
+    if (!this->vezUsuario) { // Ativa as caixas de habilidade
         this->caixaHabilidade1->ativarObj();
         this->caixaHabilidade2->ativarObj();
         this->caixaHabilidade3->ativarObj();
-    } else {
+    } else {                                // desativa as caixas de habilidade
         this->caixaHabilidade1->desativarObj();
         this->caixaHabilidade2->desativarObj();
         this->caixaHabilidade3->desativarObj();
     }
 }
 
+void FaseDeBatalha::ativarNomesHabildades() {
+    for (int i = 0; i < this->qntHabilidades; i++) {
+        if (!this->vezUsuario)
+            this->nomesHabilidades[this->indiceAliado * this->qntHabilidades + i]->ativarObj();
+        else
+            this->nomesHabilidades[this->indiceAliado * this->qntHabilidades + i]->desativarObj();
+    }
+}
+
 void FaseDeBatalha::indicarTurno() {
-    if (!this->vezUsuario) {
+    if (!this->vezUsuario) { // Indica que o turno é do usúário
         this->suaVez->ativarObj();
         this->vezOponente->desativarObj();
-    } else {
-        this->suaVez->desativarObj();
+    } else {                           // Indica que o turno é do oponente
+        this->suaVez->desativarObj(); 
         this->vezOponente->ativarObj();
     }
 }
@@ -128,7 +152,7 @@ void FaseDeBatalha::update() {
 	for (auto it = objs.begin() ; it != objs.end() ; ++it) {
         Vida* vidaObj = dynamic_cast<Vida*>(*it);
         
-        if (vidaObj)
+        if (vidaObj) // Ignora os objetos Vida
             continue;
 
 		(*it)->update();
@@ -164,6 +188,23 @@ void FaseDeBatalha::pausar(int ms) {
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
 
+void FaseDeBatalha::animacaoHabilidade(SpriteBuffer& screen) {
+    this->atualizaTerminal(screen);
+    this->pausar(120);
+    this->atualizaTerminal(screen);
+    this->pausar(120);
+    this->atualizaTerminal(screen);
+    this->pausar(120);
+    this->atualizaTerminal(screen);
+    this->pausar(120);
+    this->atualizaTerminal(screen);
+    this->pausar(120);
+    this->atualizaTerminal(screen);
+    this->pausar(120);
+    this->atualizaTerminal(screen);
+    this->pausar(120);
+}
+
 unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
 
     this->configurarModoNaoBloqueante(true);    
@@ -177,28 +218,29 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
 
             while (true) {
                 char ent;
-                std::cin >> ent;
+                std::cin >> ent; // Pegando a entrada do usuário
 
-                // this->pausar(1000);
+                int indiceHabilidade = this->indiceAliado * this->qntHabilidades; // Pegando o índice da primeira habilidade do dragão atual
 
-                int indiceHabilidade = this->indiceAliado * 3;
-                
-
-                if (ent == 'q') {
+                if (ent == 'q') { // Encerra o jogo
                     return Fase::END_GAME;
                 }
                 
-                else if (ent >= '1' && ent <= '3') {
-                    int entInt = ent - '0';
-                    Habilidade habEscolhida = *this->habilidadesAliados[indiceHabilidade + entInt];
+                else if (ent >= '1' && ent <= '3') { // Selecionando a habilidade
+                    int entInt = (ent - '0') - 1;
+                    Habilidade& habEscolhida = *this->habilidadesAliados[indiceHabilidade + entInt];
+                    habEscolhida.ativarObj();
+                    this->animacaoHabilidade(screen);
+                    habEscolhida.desativarObj();
+                    this->atualizaTerminal(screen);
                     this->ataque(habEscolhida, *this->vidaInimigo);
+                    this->atualizaTerminal(screen);
                     break;
                 }
             }
         }
 
         else {
-            // this->pausar(1000);
             // Mecânica do inimigo
 
             int hab = this->gerarNumeroAleatorio(1, 3); // Sortando qual vai ser a habilidade do inimigo
@@ -208,21 +250,22 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
         }
 
         if (!this->vidaAliadoAtual->getVida()) {
-            if (this->indiceAliado == 2) {
+            if (this->indiceAliado == 2) { // Verifica se o aliado morreu e não tem mais dragões
                 resultado = Fase::GAME_OVER;
                 break;
-            } else {
+            } else { // O aliado morreu, mas ainda tem dragões
                 this->setAliadoAtual();
-                this->update();
+                this->selecionarNomesHabilidades();
             }
         }
 
-        if (!this->vidaInimigo->getVida()) {
+        if (!this->vidaInimigo->getVida()) { // Verifica se o inimigo morreu
             resultado = Fase::LEVEL_COMPLETE;
             break;
         }
 
         this->ativarCaixasHabilidade();
+        this->ativarNomesHabildades();
         this->indicarTurno();
 
         this->pausar(1000);
@@ -230,7 +273,6 @@ unsigned FaseDeBatalha::run(SpriteBuffer& screen) {
         this->atualizaTerminal(screen);
     }
 
-    this->pausar(1000);
     this->atualizaTerminal(screen);
     this->pausar(1000);
 
@@ -250,4 +292,11 @@ void FaseDeBatalha::ataque(Habilidade& habilidade, Vida& vidaDefensor) {
     // Animação da habilidade...
 
     vidaDefensor.perderVida(habilidade.getDano());
+}
+
+void FaseDeBatalha::selecionarNomesHabilidades() {
+    for (int i = 0; i < qntHabilidades; i ++) {
+        this->nomesHabilidades[this->indiceAliado * this->qntHabilidades + i]->desativarObj();
+        this->nomesHabilidades[(this->indiceAliado + 1) * this->qntHabilidades + i]->ativarObj();
+    }
 }
