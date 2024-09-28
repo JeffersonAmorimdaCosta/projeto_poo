@@ -13,6 +13,7 @@
 #include <random>
 #include <iostream>
 #include <chrono>
+#include <cctype>
 
 using std::string;
 

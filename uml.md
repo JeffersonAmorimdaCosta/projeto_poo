@@ -25,11 +25,7 @@ classDiagram
     }
 
     class Dragao {
-        -Vida vida
-        -Habilidade hab1
-        -Habilidade hab2
-        -Habilidade hab3
-        +isVivo()
+
     }
 
     class Habilidade {
@@ -63,6 +59,4 @@ classDiagram
     ObjetoDeJogo <|-- Vida
 
     Fase <|-- FaseDeBatalha
-
-    Dragao *-- Habilidade
 ```
